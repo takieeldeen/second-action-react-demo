@@ -18,6 +18,7 @@ jobs:
       - name: Running Test Scripts
         run: npm test
   building-project:
+    needs: testing-project
     runs-on: ubuntu-latest
     steps:
       - name: Checking Out Repo Code
