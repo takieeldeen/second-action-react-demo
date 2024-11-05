@@ -1,0 +1,38 @@
+name: Deploy Project
+on: push
+jobs:
+  testing-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking-out our Repo Code
+        uses: actions/checkout@v4
+
+      - name: Installing Node Js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Installing Node Modules
+        run: npm ci
+
+      - name: Running Test Scripts
+        run: npm test
+  building-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking Out Repo Code
+        uses: actions/checkout@v4
+
+      - name: Installing Node JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Installing Node Modules
+        run: npm ci
+
+      - name: Building Project
+        run: npm run build
+
+      - name: Deploying Project
+        run: echo "Deploying...."
